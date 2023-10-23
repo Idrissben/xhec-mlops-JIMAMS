@@ -7,7 +7,7 @@ from preprocessing import compute_target, encode_sex, extract_x_y, load_data
 from settings import DATA_PATH, MODEL_PATH
 from sklearn.model_selection import train_test_split
 from training import train_model
-from utils import pickle_object
+from utils import save_pickle
 
 
 def main(trainset_path: Path) -> None:
@@ -29,11 +29,12 @@ def main(trainset_path: Path) -> None:
     print("trained")
     # Pickle model --> The model should be saved in pkl format the
     # `src/web_service/local_objects` folder
-    pickle_object(model, MODEL_PATH)
+    save_pickle(model, MODEL_PATH)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Train a model using the data at the given path.")
+    parser = argparse.ArgumentParser(
+        description="Train a model using the data at the given path.")
     parser.add_argument(
         "trainset_path",
         type=Path,
