@@ -133,6 +133,3 @@ dmypy.json
 # Secret files
 secrets/*
 !secrets/.gitkeep
-
-#Data
-data/abalonce.csv
