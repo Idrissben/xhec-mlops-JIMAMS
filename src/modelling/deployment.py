@@ -1,7 +1,5 @@
-import os
-
-from config import DATA_DIRPATH, MODELS_DIRPATH
 from prefect import serve
+from settings import MODELS_PATH, TEST_DATA_PATH, TRAIN_DATA_PATH
 from workflows import batch_predict_workflow, train_model_workflow
 
 if __name__ == "__main__":
@@ -11,13 +9,9 @@ if __name__ == "__main__":
         tags=["training", "model"],
         cron="0 0 * * 0",
         parameters={
-            "train_filepath": os.path.join(
-                DATA_DIRPATH, "yellow_tripdata_2021-01.parquet"
-            ),  # CHange train filepath
-            "test_filepath": os.path.join(
-                DATA_DIRPATH, "yellow_tripdata_2021-02.parquet"
-            ),  # change test filepath
-            "artifacts_filepath": MODELS_DIRPATH,
+            "train_filepath": TRAIN_DATA_PATH,
+            "test_filepath": TEST_DATA_PATH,
+            "artifacts_filepath": MODELS_PATH,
         },
     )
 
@@ -27,10 +21,8 @@ if __name__ == "__main__":
         tags=["inference"],
         interval=600,
         parameters={
-            "input_filepath": os.path.join(
-                DATA_DIRPATH, "yellow_tripdata_2021-03.parquet"
-            ),  # change predict filepath
-            "artifacts_filepath": MODELS_DIRPATH,
+            "input_filepath": TEST_DATA_PATH,
+            "artifacts_filepath": MODELS_PATH,
         },
     )
     serve(train_model_deployment, batch_predict_deployment)
