@@ -33,8 +33,7 @@ def main(trainset_path: Path) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Train a model using the data at the given path.")
+    parser = argparse.ArgumentParser(description="Train a model using the data at the given path.")
     parser.add_argument(
         "trainset_path",
         type=Path,
