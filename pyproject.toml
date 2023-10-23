@@ -16,7 +16,7 @@ requires-python = ">=3.9"
 "Homepage" = "https://github.com/artefactory/xhec-mlops-project-student" # TODO: update this URL
 
 [tool.setuptools]
-packages = ["src", "config"]
+packages = ["src"]
 
 [tool.ruff]
 select = [
