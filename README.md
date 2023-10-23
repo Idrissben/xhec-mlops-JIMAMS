@@ -67,13 +67,10 @@ Your work will be graded based on the following criteria:
 
 ## Steps to reproduce to build the deliverable
 
-To help you with the structure and order of steps to perform in this project, we have created different templates for pull requests.
+To help you with the structure and order of steps to perform in this project, we created different pull requests templates.
 Each branch in this repository corresponds to a future pull request and has an attached markdown file with the instructions to perform the tasks of the pull request.
 Each branch starts with a number.
 You can follow the order of the branches to build your project and collaborate.
-
-> [!NOTE]
-> There are "TODO" in the code of the different branches. Each "TODO" corresponds to a task to perform to build the project.
 
 **Please follow these steps**:
 
