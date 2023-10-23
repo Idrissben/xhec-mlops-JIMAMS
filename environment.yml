@@ -7,3 +7,4 @@ dependencies:
   - pip-tools==7.3.0
   - pip:
     - -r requirements.txt
+    - -r requirements-dev.txt

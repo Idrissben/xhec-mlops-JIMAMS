@@ -46,7 +46,7 @@ The industrialization takes the form of an API (which runs locally) that can be 
 
 Your work will be graded based on the following criteria:
 
-- **Clarity** and quality of code 
+- **Clarity** and quality of code
   - good module structure
   - naming conventions
   - correct docstrings, formatting, type hints (the code should be linted and formatted)
@@ -63,17 +63,14 @@ Your work will be graded based on the following criteria:
     - The API has validation on input data (use Pydantic)
   - The code to get the trained model and encoder is in a separate module and must be reproducible (not necessarily in a docker container)
   - The workflows to train the model and to make the inference (prediction of the age of abalone) are in separate modules and use Prefect `flow` and `task` objects
-- Use of *Pull Requests* (see below) to coordinate your collaboration 
+- Use of *Pull Requests* (see below) to coordinate your collaboration
 
 ## Steps to reproduce to build the deliverable
 
-To help you with the structure and order of steps to perform in this project, we created different pull requests templates. 
+To help you with the structure and order of steps to perform in this project, we created different pull requests templates.
 Each branch in this repository corresponds to a future pull request and has an attached markdown file with the instructions to perform the tasks of the pull request.
 Each branch starts with a number.
 You can follow the order of the branches to build your project and collaborate.
-
-> [!NOTE]
-> There are "TODO" in the code of the different branches. Each "TODO" corresponds to a task to perform to build the project.
 
 **Please follow these steps**:
 
@@ -91,7 +88,7 @@ You can follow the order of the branches to build your project and collaborate.
    > ```bash
    > git checkout branch_number_i
    > git pull origin master
-   > # At this point, you might have a VIM window opening, you can close it using the command ":wq" 
+   > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
    > git push
    > ```
     - Do as many commits as necessary on the branch_number_i to perform the task indicated in the corresponding markdown file
