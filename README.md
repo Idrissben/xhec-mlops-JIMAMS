@@ -30,42 +30,46 @@ This repository has for purpose to guide you in the use of our industrialized mo
   - [Deploy model API](#deploy-model-API)
 - [Steps to use and test our code](#steps-to-use-and-test-our-code)
 
-## Context 
+## Context
 The goal of this project is to create both an API and a linked docker image in order to be able to use our model.
 A customer wants to be able to predict the age of abalone (column "Rings") from physical measurements ("Shell weight", "Diameter", etc...), thanks to our project he/she will be able to do so and import their own data to make predictions.
 This is a way of making a machine learning model available for anyone at anytime without needing to know how to code or how to use a machine learning model.
 
-## Method used 
+## Method used
 ### Creation of the environment
-Creation of a dedicated project environment thanks to a environment.yml file available [here](./environment.yml).  
-Creation of a pre-commit document allowing us to test the code using Flake8 and Black at each commit. Code available [here](.pre-commit-config.yaml).  
-Creation of a requirements.in doc ([here](./requirements.in) and [here](./requirements-dev.in)) to monitor dependencies and keep track of useful libraries for this project. The document is coupled with a requirements.txt doc ([here](./requirements.txt) and [here](./requirements-dev.txt)).  
+Creation of a dedicated project environment thanks to a environment.yml file available [here](./environment.yml).
+Creation of a pre-commit document allowing us to test the code using Flake8 and Black at each commit. Code available [here](.pre-commit-config.yaml).
+Creation of a requirements.in doc ([here](./requirements.in) and [here](./requirements-dev.in)) to monitor dependencies and keep track of useful libraries for this project. The document is coupled with a requirements.txt doc ([here](./requirements.txt) and [here](./requirements-dev.txt)).
 
 ### EDA
-EDA notebook available [here](./notebooks/eda.ipynb).  
-Exploration of the dataset and simple feature engineering to format the dataset.   
-Creation of a test and a train set saved in the file .data/raw/...  
+EDA notebook available [here](./notebooks/eda.ipynb).
+Exploration of the dataset and simple feature engineering to format the dataset.
+Creation of a test and a train set saved in the file .data/raw/...
 
 ### Modelling
-Modelling notebook available [here](./notebooks/modelling.ipynb).  
-Ridge model finetuned thanks to a gridsearch.   
-Results stored and monitored through MLFlow to keep track of the parameters and models tested.  
+Modelling notebook available [here](./notebooks/modelling.ipynb).
+Ridge model finetuned thanks to a gridsearch.
+Results stored and monitored through MLFlow to keep track of the parameters and models tested.
 
-### From notebooks to modules 
-.py documents available [here](./src/modelling).  
-Code compiling the notebooks created in the previous step in order to go from notebooks to useful and deployable modules.  
+### From notebooks to modules
+.py documents available [here](./src/modelling).
+Code compiling the notebooks created in the previous step in order to go from notebooks to useful and deployable modules.
 Those .py documents turn the previous notebooks into efficient functions.
 
 ### Use prefect
 Set an API URL for our local server to make sure that your workflow will be tracked by this specific instance :
-prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api  
-The code used to creat this model can be found [here](./src/modelling).   
+
+```bash
+prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
+```
+
+The code used to creat this model can be found [here](./src/modelling).
 Mainly the workflows.py document (available [here](./src/modelling/workflows.py)), creating the worklfow needed for the API by processing the data, training and saving the model.
 
 ### Deploy model API
-Creation of a model API to be able to use the model in production.  
-The code used to created deploy this API can be found [here](./src/web-service).  
-Then, we created an app with Docker to be able to deploy the API on a server.  
+Creation of a model API to be able to use the model in production.
+The code used to created deploy this API can be found [here](./src/web-service).
+Then, we created an app with Docker to be able to deploy the API on a server.
 The code used to create a docker image can be found [here](./Dockerfile.app).
 
 ## Steps to use and test our code
