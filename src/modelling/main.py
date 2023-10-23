@@ -3,18 +3,19 @@
 import argparse
 from pathlib import Path
 
+import pandas as pd
 from preprocessing import compute_target, encode_sex, extract_x_y, load_data
-from settings import DATA_PATH, MODEL_PATH
+from settings import TRAIN_DATA_PATH, MODELS_PATH
 from sklearn.model_selection import train_test_split
 from training import train_model
 from utils import save_pickle
 
 
-def main(trainset_path: Path) -> None:
+def main(trainset_path: Path, model_path: Path) -> None:
     """Train a model using the data at the given path and save
     the model (pickle)."""
     # Read data
-    df = load_data(DATA_PATH)
+    df = pd.read_csv(trainset_path)
     print("load")
     # Preprocess data
     df = compute_target(df)
@@ -29,7 +30,7 @@ def main(trainset_path: Path) -> None:
     print("trained")
     # Pickle model --> The model should be saved in pkl format the
     # `src/web_service/local_objects` folder
-    save_pickle(model, MODEL_PATH)
+    save_pickle(model, model_path)
 
 
 if __name__ == "__main__":
@@ -38,8 +39,15 @@ if __name__ == "__main__":
         "trainset_path",
         type=Path,
         nargs="?",
-        default=DATA_PATH,
+        default=TRAIN_DATA_PATH,
+        help="Path to the training set (default is DATA_PATH)",
+    )
+    parser.add_argument(
+        "model_path",
+        type=Path,
+        nargs="?",
+        default=MODELS_PATH,
         help="Path to the training set (default is DATA_PATH)",
     )
     args = parser.parse_args()
-    main(DATA_PATH)
+    main(args.trainset_path, args.model_path)
