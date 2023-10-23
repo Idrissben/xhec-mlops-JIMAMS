@@ -135,4 +135,4 @@ secrets/*
 !secrets/.gitkeep
 
 #dsstore
-.DS_Store
+*.DS_Store
