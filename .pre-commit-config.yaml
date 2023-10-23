@@ -13,9 +13,15 @@ repos:
     rev: 22.12.0 # make sure it matches with versions on requirments
     hooks:
       - id: black
+<<<<<<< HEAD
         language_version: python3.9
       - id: black-jupyter
         language_version: python3.9
+=======
+        language_version: python3.10
+      - id: black-jupyter
+        language_version: python3.10
+>>>>>>> 5b8ffe6fbd4e13fff896e532952e5b28df94cb18
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0 # make sure it matches with versions on requirments
     hooks:
