@@ -1,2 +1,3 @@
-DATA_PATH = "../../data/raw/abalone.csv"
-MODEL_PATH = "../web_service/local_objects/model.pkl"
+TRAIN_DATA_PATH = "data/raw/abalone_train.csv"
+TEST_DATA_PATH = "data/raw/abalone_test.csv"
+MODELS_PATH = "src/web_service/local_objects"
