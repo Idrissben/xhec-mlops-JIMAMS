@@ -11,7 +11,7 @@ COPY ./requirements.txt /app_home/requirements.txt
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r /app_home/requirements.txt
 
-# Copy the application 
+# Copy the application
 COPY /src/web_service /app_home/web_service
 WORKDIR /app_home/web_service
 
