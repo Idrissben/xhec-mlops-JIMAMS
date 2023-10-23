@@ -1,29 +1,22 @@
-# Based on your Dockerfile and the adjustments mentioned:
-
 # Use the slim variant of Python 3.10.10.
 FROM python:3.10.10-slim
 
 # Set container's working directory.
 WORKDIR /app_home
 
-# Install conda (this is a basic example, it might need adjustments based on the Miniconda version)
-RUN apt-get update && apt-get install -y wget && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    sh Miniconda3-latest-Linux-x86_64.sh -b -p /miniconda && \
-    rm Miniconda3-latest-Linux-x86_64.sh
+# Copying requirements
+COPY ./requirements.txt /app_home/requirements.txt
 
-# Add Miniconda to PATH
-ENV PATH="/miniconda/bin:$PATH"
+# Install dependencies
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r /app_home/requirements.txt
 
-# Copy the application and install dependencies.
-COPY . .
-RUN conda env create -f environment.yml
+# Copy the application 
+COPY /src/web_service /app_home/web_service
+WORKDIR /app_home/web_service
 
-# Expose port 8000 for the application.
-EXPOSE 8000
+# Expose port 8001 for the application.
+EXPOSE 8001
 
-# Move to the right folder
-WORKDIR /app_home/src/web_service
-
-# Run Uvicorn when the container starts using the full path to the conda environment.
-CMD ["/miniconda/envs/x-hec-solution/bin/uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"]
+# Run the app on a container
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
