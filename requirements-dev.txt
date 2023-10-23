@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements-dev.in
 #
--e file:///Users/ajouad/Desktop/MLops1/xhec-mlops-JIMAMS
+-e file:.
     # via -r requirements-dev.in
 aiosqlite==0.19.0
     # via
