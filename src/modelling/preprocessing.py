@@ -3,7 +3,8 @@ from typing import List, Tuple
 import numpy as np
 import pandas as pd
 import scipy.sparse
-#from config import CATEGORICAL_COLS
+
+# from config import CATEGORICAL_COLS
 from loguru import logger
 from prefect import flow, task
 from sklearn.feature_extraction import DictVectorizer
