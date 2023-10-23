@@ -82,6 +82,13 @@ Then, **activate the environment**:
 conda activate x-hec-solution
 ```
 
+Then **train the model**:
+
+```bash
+cd src/modelling
+python workflows.py
+```
+
 Then, you can run the following command to **deploy the API** (without Docker):
 
 ```bash
