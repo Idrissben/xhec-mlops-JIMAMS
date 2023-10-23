@@ -63,7 +63,7 @@ Your work will be graded based on the following criteria:
     - The API has validation on input data (use Pydantic)
   - The code to get the trained model and encoder is in a separate module and must be reproducible (not necessarily in a docker container)
   - The workflows to train the model and to make the inference (prediction of the age of abalone) are in separate modules and use Prefect `flow` and `task` objects
-- Use of *Pull Requests* (see below) to coordinate your collaboration 
+- Use of *Pull Requests* (see below) to coordinate your collaboration
 
 ## Steps to reproduce to build the deliverable
 
@@ -91,7 +91,7 @@ You can follow the order of the branches to build your project and collaborate.
    > ```bash
    > git checkout branch_number_i
    > git pull origin master
-   > # At this point, you might have a VIM window opening, you can close it using the command ":wq" 
+   > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
    > git push
    > ```
     - Do as many commits as necessary on the branch_number_i to perform the task indicated in the corresponding markdown file
