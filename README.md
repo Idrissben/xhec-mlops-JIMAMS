@@ -110,4 +110,3 @@ docker run -p 8000:8001 my_docker_image
 ```
 
 Congrats, you can find your api running on : http://0.0.0.0:8000/docs
-
