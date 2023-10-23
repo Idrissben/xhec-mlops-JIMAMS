@@ -1,11 +1,5 @@
-from typing import Tuple
-
-import numpy as np
 import pandas as pd
-from loguru import logger
-from prefect import flow, task
 
-import pandas as pd
 
 def encode_sex(df):
     """
@@ -34,30 +28,49 @@ def encode_sex(df):
 
     # Order columns
     one_hot = one_hot[["F", "M", "I"]]
-    
+
     # Combine the resulting one-hot encoded columns with the original DataFrame
     data_one_hot = pd.concat([one_hot, df.drop(columns="Sex")], axis=1)
-    
+
     return data_one_hot
+
 
 def load_data(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
+
 
 def process_data(data: dict, with_target: bool = True) -> pd.DataFrame:
     """Preprocess data"""
     # Read data
     df = pd.DataFrame(data, index=[0])
 
-    df.rename(columns={"Whole_weight": "Whole weight",
-                    "Shucked_weight": "Shucked weight",
-                    "Viscera_weight": "Viscera weight",
-                    "Shell_weight": "Shell weight"},
-            inplace=True)
+    df.rename(
+        columns={
+            "Whole_weight": "Whole weight",
+            "Shucked_weight": "Shucked weight",
+            "Viscera_weight": "Viscera weight",
+            "Shell_weight": "Shell weight",
+        },
+        inplace=True,
+    )
 
     # Preprocess data
     df = encode_sex(df)
 
-    #Ensure right order
-    df = df[['F','I','M','Length','Diameter','Height','Whole weight','Shucked weight','Viscera weight','Shell weight']]
+    # Ensure right order
+    df = df[
+        [
+            "F",
+            "I",
+            "M",
+            "Length",
+            "Diameter",
+            "Height",
+            "Whole weight",
+            "Shucked weight",
+            "Viscera weight",
+            "Shell weight",
+        ]
+    ]
 
     return df

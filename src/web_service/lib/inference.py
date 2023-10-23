@@ -19,4 +19,4 @@ def batch_predict_workflow(
 
     X = process_data(data=data, with_target=False)
 
-    return model.predict(X)[:0]
+    return model.predict(X)[0]

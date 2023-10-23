@@ -4,8 +4,8 @@ import argparse
 from pathlib import Path
 
 import pandas as pd
-from preprocessing import compute_target, encode_sex, extract_x_y, load_data
-from settings import TRAIN_DATA_PATH, MODELS_PATH
+from preprocessing import compute_target, encode_sex, extract_x_y
+from settings import MODELS_PATH, TRAIN_DATA_PATH
 from sklearn.model_selection import train_test_split
 from training import train_model
 from utils import save_pickle
