@@ -73,7 +73,7 @@ The code used to create a docker image can be found [here](./Dockerfile.app).
 In order to set up the necessary libraries and dependencies, first **create a conda environment** for this project, using the following command in your terminal:
 
 ```bash
-conda create env -f environment.yml
+conda env create -f environment.yml
 ```
 
 Then, **activate the environment**:
@@ -92,12 +92,22 @@ python workflows.py
 Then, you can run the following command to **deploy the API** (without Docker):
 
 ```bash
-cd src/web_services #GO INTO THE RIGHT FOLDER
+cd ../web_service
 uvicorn main:app --reload
 ```
 
 And then, if your to **create your docker image**, use the following command (in the root folder):
 
 ```bash
+cd ../..
 docker build -t my_docker_image -f Dockerfile.app .
 ```
+
+And finally **run your container** :
+
+```bash
+docker run -p 8000:8001 my_docker_image
+```
+
+Congrats, you can find your api running on : http://0.0.0.0:8000/
+
